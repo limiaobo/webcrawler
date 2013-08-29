@@ -11,4 +11,4 @@ while i<len(symbolslist):
 	pattern=re.compile(regex)
 	price=re.findall(pattern, htmltext)
 	print "the price of ", symbolslist[i], " is ", price
-	i+=
+	i+=1
