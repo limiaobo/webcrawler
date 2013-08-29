@@ -1,9 +1,14 @@
 #! /usr/bin/python
 import urllib
 import re
-htmlfile=urllib.urlopen("http://finance.yahoo.com/q?s=aapl&ql=1")
-htmltext=htmlfile.read()
-regex='<span id="yfs_l84_aapl">(.+?)</span>'
-pattern=re.compile(regex)
-price=re.findall(pattern, htmltext)
-print price
+symbolslist=["aapl","spy","goog","nflx"]
+i=0
+while i<len(symbolslist):
+	url="http://finance.yahoo.com/q?s="+symbolslist[i] +"&ql=1"
+	htmlfile=urllib.urlopen(url)
+	htmltext=htmlfile.read()
+	regex='<span id="yfs_l84_'+symbolslist[i] +'">(.+?)</span>'
+	pattern=re.compile(regex)
+	price=re.findall(pattern, htmltext)
+	print "the price of ", symbolslist[i], " is ", price
+	i+=
